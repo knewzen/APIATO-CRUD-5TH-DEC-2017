@@ -26,6 +26,7 @@ class Controller extends WebController
      */
     public function index(GetAllBlogsRequest $request)
     {
+//        dd($request->all());
         $blogs = Apiato::call('Blog@GetAllBlogsAction', [$request]);
 
         // ..
@@ -67,7 +68,7 @@ class Controller extends WebController
         $blog = Apiato::call('Blog@CreateBlogAction', [$request]);
 
         // ..
-        return redirect()->route('web_blog_create');
+        return redirect()->route('web_blog_index');
     }
 
     /**
@@ -106,5 +107,6 @@ class Controller extends WebController
          $result = Apiato::call('Blog@DeleteBlogAction', [$request]);
 
          // ..
+        return redirect('/blogs');
     }
 }

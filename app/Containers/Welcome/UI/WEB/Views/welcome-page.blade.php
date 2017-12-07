@@ -72,11 +72,11 @@
 
     <div class="content">
 
-        <div class="title m-b-md">Apiato</div>
+        <div class="title m-b-md">Blogs</div>
 
         <div class="links">
-            <a href="http://apiato.io/">Documentation</a>
-            <a href="https://github.com/apiato/apiato">GitHub</a>
+            <a href="{{url('/login-user')}}">Login</a>
+            <a href="{{url('/register')}}">Register</a>
         </div>
     </div>
 </div>

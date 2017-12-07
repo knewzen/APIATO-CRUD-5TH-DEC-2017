@@ -4,7 +4,8 @@ namespace App\Containers\Authentication\Tasks;
 
 use App\Containers\Authentication\Exceptions\LoginFailedException;
 use App\Ship\Parents\Tasks\Task;
-use Auth;
+use Illuminate\Support\Facades\Auth;
+
 
 /**
  * Class WebLoginTask.

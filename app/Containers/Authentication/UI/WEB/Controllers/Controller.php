@@ -24,6 +24,11 @@ class Controller extends WebController
         return view('authentication::login');
     }
 
+    public function showUserLoginPage()
+    {
+        return view('authentication::userlogin');
+    }
+
     /**
      * @param \App\Containers\Authentication\UI\WEB\Requests\LoginRequest $request
      *
@@ -39,6 +44,18 @@ class Controller extends WebController
 
         return is_array($result) ? redirect('login')->with($result) : redirect('dashboard');
     }
+
+    public function loginUser(LoginRequest $request)
+    {
+
+        try {
+            $result = Apiato::call('Authentication@WebLoginAction', [$request]);
+        } catch (Exception $e) {
+            return redirect('login-user')->with('status', $e->getMessage());
+        }
+
+        return is_array($result) ? redirect('login-user')->with($result) : redirect('/blogs');
+   }
 
     /**
      * @param \App\Containers\Authentication\UI\WEB\Requests\ViewDashboardRequest $request
@@ -58,6 +75,13 @@ class Controller extends WebController
         Apiato::call('Authentication@WebLogoutAction');
 
         return redirect('login');
+    }
+
+    public function logoutUser()
+    {
+        Apiato::call('Authentication@WebLogoutAction');
+
+        return redirect('/login-user');
     }
 
 }
